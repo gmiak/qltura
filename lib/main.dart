@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qltura/client/viewModel/utils/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,8 +14,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Qltura',
-      theme: ThemeData.dark(),
-      home: const Scaffold(body: Text('Lets build Qltura')),
+      theme: ThemeData.dark()
+          .copyWith(scaffoldBackgroundColor: mobileBackgroundColor),
+      home: const Scaffold(body: Text('Hello world')),
     );
   }
 }
