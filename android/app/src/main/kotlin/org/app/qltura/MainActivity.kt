@@ -1,4 +1,4 @@
-package com.example.qltura
+package org.app.qltura
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "974107373016",
+    "project_id": "qltura-35db9",
+    "storage_bucket": "qltura-35db9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974107373016:android:8253aa572aca49362a56ad",
+        "android_client_info": {
+          "package_name": "org.app.qltura"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974107373016-omr0cgqvm4ecdo8bam5eujeqei39unvt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKtEK4ceTgaL0ly6RvTK4Q8aHMMfRcyRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974107373016-omr0cgqvm4ecdo8bam5eujeqei39unvt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
