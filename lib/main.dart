@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:qltura/client/viewModel/utils/colors.dart';
+import 'package:qltura/client/service/config/responsiveLayout/mobileScreenLayout.dart';
+import 'package:qltura/client/service/config/responsiveLayout/responsive.dart';
+import 'package:qltura/client/service/config/responsiveLayout/webScreenLayout.dart';
+import 'client/service/utils/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +19,9 @@ class MyApp extends StatelessWidget {
       title: 'Qltura',
       theme: ThemeData.dark()
           .copyWith(scaffoldBackgroundColor: mobileBackgroundColor),
-      home: const Scaffold(body: Text('Hello world')),
+      home: const ResponsiveLayout(
+          mobileScreenLayout: MobileScreenLayout(),
+          webScreenLayout: WebScreenLayout()),
     );
   }
 }
