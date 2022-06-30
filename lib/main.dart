@@ -1,11 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:qltura/client/service/config/responsiveLayout/mobile_screen_layout.dart';
-import 'package:qltura/client/service/config/responsiveLayout/responsive.dart';
-import 'package:qltura/client/service/config/responsiveLayout/web_screen_layout.dart';
-import 'package:qltura/client/view/screens/login_screen.dart';
-import 'client/service/config/responsiveLayout/web_screen_layout.dart';
+import 'package:qltura/client/view/screens/signup_screen.dart';
 import 'client/service/utils/colors.dart';
 
 Future<void> main() async {
@@ -42,7 +38,7 @@ class MyApp extends StatelessWidget {
       /*home: const ResponsiveLayout(
           mobileScreenLayout: MobileScreenLayout(),
           webScreenLayout: WebScreenLayout()),*/
-      home: const LoginScreen(),
+      home: const SignUpScreen(),
     );
   }
 }
