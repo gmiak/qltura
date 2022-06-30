@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:qltura/client/service/config/responsiveLayout/mobile_screen_layout.dart';
 import 'package:qltura/client/service/config/responsiveLayout/responsive.dart';
 import 'package:qltura/client/service/config/responsiveLayout/web_screen_layout.dart';
+import 'package:qltura/client/view/screens/login_screen.dart';
 import 'client/service/config/responsiveLayout/web_screen_layout.dart';
 import 'client/service/utils/colors.dart';
 
@@ -38,9 +39,10 @@ class MyApp extends StatelessWidget {
       title: 'Qltura',
       theme: ThemeData.dark()
           .copyWith(scaffoldBackgroundColor: mobileBackgroundColor),
-      home: const ResponsiveLayout(
+      /*home: const ResponsiveLayout(
           mobileScreenLayout: MobileScreenLayout(),
-          webScreenLayout: WebScreenLayout()),
+          webScreenLayout: WebScreenLayout()),*/
+      home: const LoginScreen(),
     );
   }
 }
