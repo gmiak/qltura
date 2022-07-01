@@ -29,76 +29,79 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // space on the top
-              Flexible(flex: 2, child: Container()),
-              // logo
-              Image.asset(
-                'assets/logo_text.png',
-                color: primaryColor,
-                height: 64,
-              ),
-              const SizedBox(height: 34),
-              // Text field input for email
-              TextFieldInput(
-                  textEditingController: _emailController,
-                  hinText: "Enter your email",
-                  textInputType: TextInputType.emailAddress),
-              const SizedBox(height: 24),
-              // Text field input for password
-              TextFieldInput(
-                textEditingController: _passwordController,
-                hinText: "Enter your password",
-                textInputType: TextInputType.text,
-                isPass: true,
-              ),
-              const SizedBox(height: 24),
-              // Button login with container
-              InkWell(
-                onTap: () {},
-                child: Container(
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  decoration: const ShapeDecoration(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(4),
-                        ),
-                      ),
-                      color: blueColor),
-                  child: const Text('Log in'),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // space on the top
+                Flexible(flex: 2, child: Container()),
+                // logo
+                Image.asset(
+                  'assets/logo_text.png',
+                  color: primaryColor,
+                  height: 64,
                 ),
-              ),
-              const SizedBox(height: 12),
-              Flexible(
-                  flex: 2,
-                  child: Container()), // Put this section on the bottom
-              // Transitioning to signing up
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: const Text("Don't have an account? "),
+                const SizedBox(height: 34),
+                // Text field input for email
+                TextFieldInput(
+                    textEditingController: _emailController,
+                    hinText: "Enter your email",
+                    textInputType: TextInputType.emailAddress),
+                const SizedBox(height: 24),
+                // Text field input for password
+                TextFieldInput(
+                  textEditingController: _passwordController,
+                  hinText: "Enter your password",
+                  textInputType: TextInputType.text,
+                  isPass: true,
+                ),
+                const SizedBox(height: 24),
+                // Button login with container
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    decoration: const ShapeDecoration(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(4),
+                          ),
+                        ),
+                        color: blueColor),
+                    child: const Text('Log in'),
                   ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
+                ),
+                const SizedBox(height: 12),
+                Flexible(
+                    flex: 2,
+                    child: Container()), // Put this section on the bottom
+                // Transitioning to signing up
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
                       padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: const Text(
-                        "Sign up",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                      child: const Text("Don't have an account? "),
+                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: const Text(
+                          "Sign up",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              )
-            ],
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
