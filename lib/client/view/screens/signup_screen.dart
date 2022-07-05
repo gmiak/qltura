@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:qltura/client/service/utils/colors.dart';
 import 'package:qltura/client/view/components/text_field_input.dart';
-import 'package:qltura/server/db/auth_methods.dart';
+import 'package:qltura/server/controller/profile_controller.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -92,10 +92,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 // Button login with container
                 InkWell(
                   onTap: () async {
-                    String res = await AuthMethods().signUpUser(
-                        email: _emailController.text,
-                        password: _passwordController.text,
-                        username: _usernameController.text);
+                    String res = await ProfileController()
+                        .signupAndCreateUserProfile(
+                            email: _emailController.text,
+                            password: _passwordController.text,
+                            username: _usernameController.text);
                     print(res);
                   },
                   child: Container(
