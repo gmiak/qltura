@@ -92,11 +92,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 // Button login with container
                 InkWell(
                   onTap: () async {
-                    String res = await ProfileController()
-                        .signupAndCreateUserProfile(
-                            email: _emailController.text,
-                            password: _passwordController.text,
-                            username: _usernameController.text);
+                    String res =
+                        await ProfileController().signupAndCreateUserProfile(
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                      username: _usernameController.text,
+                      file: null,
+                    );
+                    // ignore: avoid_print
                     print(res);
                   },
                   child: Container(

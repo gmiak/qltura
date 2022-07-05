@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:qltura/server/model/profile_interface.dart';
 import 'package:qltura/server/model/profile_model.dart';
@@ -11,7 +13,7 @@ class ProfileController {
     required String email,
     required String password,
     required String username,
-    //required Uint8List file,
+    required Uint8List file,
   }) async {
     String res = "Some error occurred";
     Profile userProfile = ProfileModel(email: email, username: username);
@@ -27,7 +29,7 @@ class ProfileController {
             "Password must contain an uppercase, lowercase, numeric digit and special character";
         return res;
       // ignore: todo
-      // ignore: todo
+
       }*/ //TODO: Fixe this
 
       /*if (!username.isValidName) {
@@ -39,7 +41,9 @@ class ProfileController {
           username.isEmpty ||
           !email.isNotNull ||
           !password.isNotNull ||
-          !username.isNotNull) {
+          !username.isNotNull ||
+          // ignore: unnecessary_null_comparison
+          file == null) {
         res = "Missing Data - Please try again!";
         return res;
       }
