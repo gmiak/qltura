@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 /// Profile interface
 class Profile {
   String? id;
@@ -10,7 +8,7 @@ class Profile {
   String? gender;
   String? joined;
   String? bio;
-  Uint8List? profilepic;
+  String? profilepic;
   List<String>? followers;
   List<String>? following;
 }

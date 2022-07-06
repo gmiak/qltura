@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// Text Field Input component
+
 class TextFieldInput extends StatelessWidget {
   final TextEditingController textEditingController;
   final bool isPass;

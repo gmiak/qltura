@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:qltura/client/service/utils/dimension.dart';
 
+/// Responsive Layout provider
+
 class ResponsiveLayout extends StatelessWidget {
   final Widget webScreenLayout;
   final Widget mobileScreenLayout;

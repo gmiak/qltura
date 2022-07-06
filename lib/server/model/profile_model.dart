@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:qltura/server/model/profile_interface.dart';
 
 class ProfileModel implements Profile {
@@ -28,13 +26,13 @@ class ProfileModel implements Profile {
   String? lastname;
 
   @override
-  Uint8List? profilepic;
+  String? profilepic;
 
   @override
   String? username;
 
-  // Signup
-  ProfileModel({this.email, this.id, this.username});
+  // Signup constructor
+  ProfileModel({this.email, this.username});
 
   @override
   String? bio;

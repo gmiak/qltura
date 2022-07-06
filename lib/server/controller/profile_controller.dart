@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:qltura/server/model/profile_interface.dart';
 import 'package:qltura/server/model/profile_model.dart';
@@ -30,7 +29,7 @@ class ProfileController {
         return res;
       // ignore: todo
 
-      }*/ //TODO: Fixe this
+      }*/
 
       /*if (!username.isValidName) {
         res = "Please Enter a valid Username!";
@@ -41,9 +40,7 @@ class ProfileController {
           username.isEmpty ||
           !email.isNotNull ||
           !password.isNotNull ||
-          !username.isNotNull ||
-          // ignore: unnecessary_null_comparison
-          file == null) {
+          !username.isNotNull) {
         res = "Missing Data - Please try again!";
         return res;
       }
@@ -51,9 +48,13 @@ class ProfileController {
       final ps = ProfileService();
       UserCredential cred = await ps.signupUser(email, password);
 
-      // Add user to our database
+      // Add the user to our database
       userProfile.id = cred.user!.uid;
-      res = await ps.createUserProfile(userProfile);
+      String userProfilePicUrl = await ps.loadUserProfilePic(
+          userProfile.id!, file); // Load the user's profile image
+      // ignore: avoid_print
+      print(userProfilePicUrl);
+      res = await ps.createUserProfile(userProfile, userProfilePicUrl);
     } catch (err) {
       res = err.toString();
     }
