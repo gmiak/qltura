@@ -1,4 +1,4 @@
-# qltura
+# Qltura
 Project Mobile App
 
 The project aims to implement a mobile application that allows users to collect and organize pictures of any type of object they are interested in. Users can for example create a collection of their favorite movies, songs, and books. They can collect the best wines they have drunk by taking a picture and adding a description then sharing it with friends and family.
