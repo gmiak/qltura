@@ -1,19 +1,19 @@
-extension ProfileValidationService on String {
+extension StringValidationService on String {
   bool get isValidEmail {
     final emailRegExp = RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
     return emailRegExp.hasMatch(this);
   }
 
-  bool get isValidName {
+  bool get isValidUserName {
     final nameRegExp =
         // ignore: unnecessary_new
-        new RegExp(r"^\s*([A-Za-z]{1,}([\.,] |[-']| ))+[A-Za-z]+\.?\s*$");
+        new RegExp(r"^[A-Za-z][A-Za-z0-9_]{1,}$");
     return nameRegExp.hasMatch(this);
   }
 
   bool get isValidPassword {
-    final passwordRegExp = RegExp(
-        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\><*~]).{8,}/pre>');
+    final passwordRegExp =
+        RegExp(r"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
     return passwordRegExp.hasMatch(this);
   }
 

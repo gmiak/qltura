@@ -23,7 +23,7 @@ class ProfileService implements IProfileService {
       Profile userProfile, String userProfilePicUrl) async {
     final db = DBConnect();
     String res =
-        "Something went wrong creating the your profile.\nPlease login and complete your the process!";
+        "Something went wrong creating your profile.\nPlease login before to continue!";
     try {
       await db.getFirestore().collection('users').doc(userProfile.id).set({
         'uid': userProfile.id,

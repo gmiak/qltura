@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:qltura/server/model/profile_interface.dart';
 import 'package:qltura/server/model/profile_model.dart';
 import 'package:qltura/server/service/profile_service.dart';
-import 'package:qltura/server/service/profile_validation_service.dart';
+import 'package:qltura/server/service/validation_service.dart';
 //import 'package:flutter/material.dart';
 
 class ProfileController {
@@ -18,43 +18,39 @@ class ProfileController {
     Profile userProfile = ProfileModel(email: email, username: username);
 
     try {
-      // Validator
+      // Validation
       if (!email.isValidEmail) {
         res = "Please Enter a valid Email!";
         return res;
       }
-      /*if (!password.isValidPassword) {
+      if (!password.isValidPassword) {
         res =
-            "Password must contain an uppercase, lowercase, numeric digit and special character";
-        return res;
-      // ignore: todo
-
-      }*/
-
-      /*if (!username.isValidName) {
-        res = "Please Enter a valid Username!";
-        return res;
-      }*/
-      if (email.isEmpty ||
-          password.isEmpty ||
-          username.isEmpty ||
-          !email.isNotNull ||
-          !password.isNotNull ||
-          !username.isNotNull) {
-        res = "Missing Data - Please try again!";
+            "Password must contain at least; eight characters, one uppercase letter, one lowercase letter, one number and one special character";
         return res;
       }
-      // register the user
+
+      if (!username.isValidUserName) {
+        res =
+            "Please Enter a valid Username e.g, Gmiak, Tito_123, tito_123 (2-10 characters).";
+        return res;
+      }
+
+      // Register the user
       final ps = ProfileService();
       UserCredential cred = await ps.signupUser(email, password);
 
-      // Add the user to our database
+      // Add the user to the database
       userProfile.id = cred.user!.uid;
       String userProfilePicUrl = await ps.loadUserProfilePic(
           userProfile.id!, file); // Load the user's profile image
-      // ignore: avoid_print
-      print(userProfilePicUrl);
       res = await ps.createUserProfile(userProfile, userProfilePicUrl);
+    } on FirebaseAuthException catch (err) {
+      if (err.code == 'invalid-email') {
+        res = "The email is badly formated";
+      }
+      if (err.code == 'weak-password') {
+        res = "Password should be at least 6 characters";
+      }
     } catch (err) {
       res = err.toString();
     }
