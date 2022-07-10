@@ -92,4 +92,16 @@ class UserController {
     final us = UserService();
     us.signoutUser();
   }
+
+  // Getting user data
+  Future<UserQ> getUserdata() async {
+    UserQ res = UserQ(username: "Error", email: "error@error.com");
+    UserService userService = UserService();
+    try {
+      res = await userService.getUser();
+    } catch (err) {
+      res.bio = err.toString();
+    }
+    return res;
+  }
 }
