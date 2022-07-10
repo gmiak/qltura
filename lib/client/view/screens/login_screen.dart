@@ -2,7 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:qltura/client/service/utils/colors.dart';
+import 'package:qltura/client/service/utils/show_snack_bar.dart';
 import 'package:qltura/client/view/components/text_field_input.dart';
+import 'package:qltura/client/view/screens/signup_screen.dart';
+import 'package:qltura/server/controller/user_controller.dart';
+
+import '../../service/config/responsiveLayout/mobile_screen_layout.dart';
+import '../../service/config/responsiveLayout/responsive.dart';
+import '../../service/config/responsiveLayout/web_screen_layout.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -13,6 +20,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  // ignore: prefer_final_fields
+  bool _isLoading = false;
 
   // Dispose for cleaning up textfield are
   @override
@@ -20,6 +29,41 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+  }
+
+  // loginUser
+  void loginUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+    String res = await UserController().loginUser(
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+    if (res == "success") {
+      // ignore: use_build_context_synchronously
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) => const ResponsiveLayout(
+          mobileScreenLayout: MobileScreenLayout(),
+          webScreenLayout: WebScreenLayout(),
+        ),
+      ));
+    } else {
+      // ignore: use_build_context_synchronously
+      showSnackBar(res, context);
+    }
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  // Navigate to signup
+  void navigateToSignup() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const SignUpScreen(),
+      ),
+    );
   }
 
   @override
@@ -58,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 24),
               // Button login with container
               InkWell(
-                onTap: () {},
+                onTap: loginUser,
                 child: Container(
                   width: double.infinity,
                   alignment: Alignment.center,
@@ -70,7 +114,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       color: blueColor),
-                  child: const Text('Log in'),
+                  child: _isLoading
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: primaryColor,
+                          ),
+                        )
+                      : const Text('Log in'),
                 ),
               ),
               const SizedBox(height: 12),
@@ -86,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: const Text("Don't have an account? "),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: navigateToSignup,
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: const Text(

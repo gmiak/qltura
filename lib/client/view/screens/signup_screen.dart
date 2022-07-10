@@ -5,8 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:qltura/client/service/utils/colors.dart';
 import 'package:qltura/client/service/utils/select_image.dart';
+import 'package:qltura/client/service/utils/show_snack_bar.dart';
 import 'package:qltura/client/view/components/text_field_input.dart';
-import 'package:qltura/server/controller/profile_controller.dart';
+import 'package:qltura/client/view/screens/login_screen.dart';
+import 'package:qltura/server/controller/user_controller.dart';
+
+import '../../service/config/responsiveLayout/mobile_screen_layout.dart';
+import '../../service/config/responsiveLayout/responsive.dart';
+import '../../service/config/responsiveLayout/web_screen_layout.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -19,6 +25,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   Uint8List? _image;
+  // ignore: prefer_final_fields
+  bool _isLoading = false;
 
   // Dispose for cleaning up the textfield
   @override
@@ -35,6 +43,43 @@ class _SignUpScreenState extends State<SignUpScreen> {
     setState(() {
       _image = pic;
     });
+  }
+
+  // Signup user
+  signUpUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+    String res = await UserController().signup(
+      email: _emailController.text,
+      password: _passwordController.text,
+      username: _usernameController.text,
+      file: _image ?? await loadDefaultAvatar(),
+    );
+    setState(() {
+      _isLoading = false;
+    });
+    if (res == "success") {
+      // ignore: use_build_context_synchronously
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => const ResponsiveLayout(
+          mobileScreenLayout: MobileScreenLayout(),
+          webScreenLayout: WebScreenLayout(),
+        ),
+      ));
+    } else {
+      // ignore: use_build_context_synchronously
+      showSnackBar(res, context);
+    }
+  }
+
+  // Navigate to signup
+  void navigateTologin() {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => const LoginScreen(),
+      ),
+    );
   }
 
   @override
@@ -108,17 +153,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               const SizedBox(height: 24),
               // Button login with container
               InkWell(
-                onTap: () async {
-                  String res =
-                      await ProfileController().signupAndCreateUserProfile(
-                    email: _emailController.text,
-                    password: _passwordController.text,
-                    username: _usernameController.text,
-                    file: _image ?? await loadDefaultAvatar(),
-                  );
-                  // ignore: avoid_print
-                  print(res);
-                },
+                onTap: signUpUser,
                 child: Container(
                   width: double.infinity,
                   alignment: Alignment.center,
@@ -130,7 +165,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                       color: blueColor),
-                  child: const Text('Sign up'),
+                  child: _isLoading
+                      ? Center(
+                          child: CircularProgressIndicator(
+                            color: primaryColor,
+                          ),
+                        )
+                      : const Text('Sign up'),
                 ),
               ),
               const SizedBox(height: 12),
@@ -146,11 +187,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: const Text("Already have an account? "),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: navigateTologin,
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: const Text(
-                        "Log in",
+                        "Login",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
