@@ -1,4 +1,5 @@
 import 'dart:typed_data';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:qltura/server/model/user_model.dart';
@@ -6,18 +7,6 @@ import 'package:qltura/server/service/user/iuser_service.dart';
 import '../../db/db_connect.dart';
 
 class UserService implements IUserService {
-  @override
-  Future<List<String>> getUserFollowers() {
-    // TODO: implement getUserFollowers
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<List<String>> getUserFollowing() {
-    // TODO: implement getUserFollowing
-    throw UnimplementedError();
-  }
-
   @override
   Future<String> addUserToDb(UserQ user) async {
     final db = DBConnect();
@@ -78,5 +67,15 @@ class UserService implements IUserService {
     // Putting the download url in res. Download url = profile pic location
     String res = await snap.ref.getDownloadURL();
     return res;
+  }
+
+  @override
+  Future<UserQ> getUser() async {
+    final db = DBConnect();
+    // Getting the current user from firestore
+    User currentUser = db.getAuth().currentUser!; // The logged user
+    DocumentSnapshot snapshot =
+        await db.getFirestore().collection('users').doc(currentUser.uid).get();
+    return UserQ.fromSnap(snapshot);
   }
 }
