@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:qltura/server/controller/user_controller.dart';
 import '../components/appbar.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -12,7 +12,8 @@ class MenuScreen extends StatelessWidget {
         title: 'Menu',
         iconButtons: iconButtons(),
       ),
-      body: const Center(child: Text("This is Menu")),
+      body: Center(
+          child: IconButton(onPressed: logout, icon: Icon(Icons.logout))),
     );
   }
 
@@ -32,5 +33,9 @@ class MenuScreen extends StatelessWidget {
       tooltip: 'Search Icon',
     ));
     return buttons;
+  }
+
+  logout() async {
+    await UserController().logout();
   }
 }
