@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qltura/client/service/utils/dimension.dart';
+import 'package:qltura/client/service/utils/global_variables.dart';
 
 import '../provider/user_provider.dart';
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qltura/client/view/screens/add_post_screen.dart';
 
 import '../components/appbar.dart';
 
@@ -10,18 +11,25 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: Appbar(
         title: 'Qltura',
-        iconButtons: iconButtons(),
+        iconButtons: iconButtons(context),
       ),
       body: const Center(child: Text("This is home")),
     );
   }
 
   // Appbar
-  List<IconButton> iconButtons() {
+  List<IconButton> iconButtons(BuildContext context) {
     List<IconButton> buttons = <IconButton>[];
     // Add buttons 1
     buttons.add(IconButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (context) => const AddPostScreen(),
+          ),
+          (route) => false,
+        );
+      },
       icon: const Icon(Icons.add),
       tooltip: 'Add Icon',
     ));

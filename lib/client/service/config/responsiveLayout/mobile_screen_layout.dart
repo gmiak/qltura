@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qltura/client/service/config/provider/user_provider.dart';
 import 'package:qltura/client/service/utils/colors.dart';
+import 'package:qltura/client/service/utils/global_variables.dart';
 import 'package:qltura/client/view/screens/discover_screen.dart';
 import 'package:qltura/client/view/screens/home_screen.dart';
 import 'package:qltura/client/view/screens/menu_screen.dart';
@@ -62,13 +63,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
             NeverScrollableScrollPhysics(), // can be usefull when implemented the scrolling categories on the user's profile
         controller: pageController,
         onPageChanged: onPageChanged,
-        children: [
-          HomeScreen(),
-          DiscoverScreen(),
-          ProfileScreen(),
-          NotificationScreen(),
-          MenuScreen()
-        ],
+        children: appHomeScreens,
       ),
       bottomNavigationBar: CupertinoTabBar(
         backgroundColor: mobileBackgroundColor,

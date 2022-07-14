@@ -42,12 +42,14 @@ class _LoginScreenState extends State<LoginScreen> {
     );
     if (res == "success") {
       // ignore: use_build_context_synchronously
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => const ResponsiveLayout(
-          mobileScreenLayout: MobileScreenLayout(),
-          webScreenLayout: WebScreenLayout(),
-        ),
-      ));
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (context) => const ResponsiveLayout(
+              mobileScreenLayout: MobileScreenLayout(),
+              webScreenLayout: WebScreenLayout(),
+            ),
+          ),
+          (route) => false);
     } else {
       // ignore: use_build_context_synchronously
       showSnackBar(res, context);
