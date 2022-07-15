@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:qltura/client/service/config/responsiveLayout/mobile_screen_layout.dart';
 import 'package:qltura/client/service/utils/colors.dart';
 
+import '../../service/utils/utils_uno.dart';
+
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({Key? key}) : super(key: key);
 
@@ -35,14 +37,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
       leading: IconButton(
         icon: Icon(Icons.close),
         iconSize: 32,
-        onPressed: () {
-          Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-              builder: (context) => const MobileScreenLayout(),
-            ),
-            (route) => false,
-          );
-        },
+        onPressed: navigateToHome,
       ),
       title: Text("Create post", style: const TextStyle(fontSize: 16.0)),
       centerTitle: true,
@@ -61,5 +56,14 @@ class _AddPostScreenState extends State<AddPostScreen> {
         const SizedBox(width: 10),
       ],
     );
+  }
+
+  // navigates to home
+  navigateToHome() {
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+          builder: (context) => const MobileScreenLayout(),
+        ),
+        (route) => false);
   }
 }

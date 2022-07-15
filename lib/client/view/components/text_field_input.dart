@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qltura/client/service/utils/colors.dart';
 
 /// Text Field Input component
 
@@ -18,17 +19,20 @@ class TextFieldInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final inputBorder =
-        OutlineInputBorder(borderSide: Divider.createBorderSide(context));
+    const inputBorder = OutlineInputBorder(
+        borderSide: BorderSide(color: textFieldBorderSideColor));
     return TextField(
       controller: textEditingController,
+      style: const TextStyle(color: textFieldInputTextColor),
       decoration: InputDecoration(
         hintText: hinText,
+        hintStyle: const TextStyle(color: textFieldTextColor),
         border: inputBorder,
         focusedBorder: inputBorder,
         enabledBorder: inputBorder,
         filled: true,
-        contentPadding: const EdgeInsets.all(8),
+        contentPadding: const EdgeInsets.all(15.0),
+        fillColor: textFieldFillColor,
       ),
       keyboardType: textInputType,
       obscureText: isPass,

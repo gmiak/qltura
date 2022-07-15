@@ -4,15 +4,14 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:qltura/client/service/utils/colors.dart';
-import 'package:qltura/client/service/utils/select_image.dart';
-import 'package:qltura/client/service/utils/show_snack_bar.dart';
+import 'package:qltura/client/view/components/logo_text.dart';
 import 'package:qltura/client/view/components/text_field_input.dart';
-import 'package:qltura/client/view/screens/login_screen.dart';
+import 'package:qltura/client/view/screens/start/login_screen.dart';
 import 'package:qltura/server/controller/user_controller.dart';
-
-import '../../service/config/responsiveLayout/mobile_screen_layout.dart';
-import '../../service/config/responsiveLayout/responsive.dart';
-import '../../service/config/responsiveLayout/web_screen_layout.dart';
+import '../../../service/config/responsiveLayout/mobile_screen_layout.dart';
+import '../../../service/config/responsiveLayout/responsive.dart';
+import '../../../service/config/responsiveLayout/web_screen_layout.dart';
+import '../../../service/utils/utils_uno.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -75,135 +74,136 @@ class _SignUpScreenState extends State<SignUpScreen> {
     }
   }
 
-  // Navigate to signup
-  void navigateTologin() {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (context) => const LoginScreen(),
-      ),
-    );
+  // navigates to login
+  navigateToLogin() {
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+          builder: (context) => const LoginScreen(),
+        ),
+        (route) => false);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
+      body: Center(
+        child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 24),
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // space on the top
-              Flexible(flex: 2, child: Container()),
-              // logo
-              Image.asset(
-                'assets/logo_text.png',
-                color: primaryColor,
-                height: 64,
-              ),
-              const SizedBox(height: 34),
-              // Circular widget to accept and show our selected profile pic
-              Stack(
+          shrinkWrap: true,
+          children: [
+            Center(
+              child: Column(
                 children: [
-                  // ignore: unnecessary_null_comparison
-                  _image != null
-                      ? CircleAvatar(
-                          radius: 64,
-                          backgroundImage: MemoryImage(_image!),
-                        )
-                      : CircleAvatar(
-                          radius: 64,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(50.0),
-                            child: Image.asset('assets/avatar.png'),
-                          ),
-                        ),
-                  Positioned(
-                    bottom: -10,
-                    left: 80,
-                    child: IconButton(
-                      onPressed: selectImage,
-                      icon: const Icon(
-                        Icons.add_a_photo,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 24),
-              // Text field input for username
-              TextFieldInput(
-                  textEditingController: _usernameController,
-                  hinText: "Enter your username",
-                  textInputType: TextInputType.text),
-              const SizedBox(height: 24),
-              // Text field input for email
-              TextFieldInput(
-                  textEditingController: _emailController,
-                  hinText: "Enter your email",
-                  textInputType: TextInputType.emailAddress),
-              const SizedBox(height: 24),
-              // Text field input for password
-              TextFieldInput(
-                textEditingController: _passwordController,
-                hinText: "Enter your password",
-                textInputType: TextInputType.text,
-                isPass: true,
-              ),
-              const SizedBox(height: 24),
-              // Button login with container
-              InkWell(
-                onTap: signUpUser,
-                child: Container(
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  decoration: const ShapeDecoration(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(4),
-                        ),
-                      ),
-                      color: blueColor),
-                  child: _isLoading
-                      ? Center(
-                          child: CircularProgressIndicator(
+                  const SizedBox(height: 34),
+                  // Circular widget to accept and show our selected profile pic
+                  Stack(
+                    children: [
+                      // ignore: unnecessary_null_comparison
+                      _image != null
+                          ? CircleAvatar(
+                              radius: 60,
+                              backgroundImage: MemoryImage(_image!),
+                            )
+                          : CircleAvatar(
+                              backgroundColor: appBackgroundColor,
+                              radius: 60,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(60.0),
+                                child: Image.asset('assets/avatar.png'),
+                              ),
+                            ),
+                      Positioned(
+                        bottom: -1,
+                        left: 76,
+                        child: IconButton(
+                          onPressed: selectImage,
+                          icon: const Icon(
+                            Icons.add_a_photo,
                             color: primaryColor,
+                            size: 25,
                           ),
-                        )
-                      : const Text('Sign up'),
-                ),
-              ),
-              const SizedBox(height: 12),
-              Flexible(
-                  flex: 2,
-                  child: Container()), // Put this section on the bottom
-              // Transitioning to signing up
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: const Text("Already have an account? "),
-                  ),
-                  GestureDetector(
-                    onTap: navigateTologin,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: const Text(
-                        "Login",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
+                    ],
+                  ),
+                  const SizedBox(height: 24),
+                  // Text field input for username
+                  TextFieldInput(
+                      textEditingController: _usernameController,
+                      hinText: "Username",
+                      textInputType: TextInputType.text),
+                  const SizedBox(height: 12),
+                  // Text field input for email
+                  TextFieldInput(
+                      textEditingController: _emailController,
+                      hinText: "Email address",
+                      textInputType: TextInputType.emailAddress),
+                  const SizedBox(height: 12),
+                  // Text field input for password
+                  TextFieldInput(
+                    textEditingController: _passwordController,
+                    hinText: "Password",
+                    textInputType: TextInputType.text,
+                    isPass: true,
+                  ),
+                  const SizedBox(height: 12),
+                  // Button login with container
+                  InkWell(
+                    onTap: signUpUser,
+                    child: Container(
+                      width: double.infinity,
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.symmetric(vertical: 15),
+                      decoration: const ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(8),
+                            ),
+                          ),
+                          color: brandColor),
+                      child: _isLoading
+                          ? Center(
+                              child: CircularProgressIndicator(
+                                color: appBackgroundColor,
+                              ),
+                            )
+                          : const Text(
+                              'Sign up',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
                     ),
                   ),
+                  const SizedBox(height: 34),
                 ],
-              )
-            ],
-          ),
+              ),
+            ),
+            // Transitioning to signing up
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: const Text(
+                    "Already have an account? ",
+                    style: TextStyle(
+                      color: hideLinkTextColor,
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: navigateToLogin,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: const Text(
+                      "Login",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: linkColor),
+                    ),
+                  ),
+                ),
+              ],
+            )
+          ],
         ),
       ),
     );

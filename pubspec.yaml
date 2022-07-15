@@ -72,6 +72,11 @@ flutter:
         - asset: fonts/PlayfairDisplay-Italic.ttf
         - asset: fonts/PlayfairDisplay.ttf
           style: italic
+    - family: Rochester
+      fonts:
+        - asset: fonts/Rochester-Regular.ttf
+        - asset: fonts/Rochester-Regular.ttf
+          style: italic
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

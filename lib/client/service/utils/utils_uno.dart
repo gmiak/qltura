@@ -1,7 +1,24 @@
+import 'dart:core';
 import 'dart:typed_data';
+
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
+// Shows snackbar
+showSnackBar(String content, BuildContext context) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(
+        content,
+        textAlign: TextAlign.center,
+      ),
+      duration: const Duration(seconds: 2),
+    ),
+  );
+}
+
+// Selects image from source
 pickImage(ImageSource source) async {
   // ignore: no_leading_underscores_for_local_identifiers
   final ImagePicker _imagePicker = ImagePicker();

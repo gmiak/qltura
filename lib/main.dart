@@ -4,8 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qltura/client/service/config/provider/user_provider.dart';
-import 'package:qltura/client/view/screens/login_screen.dart';
-import 'package:qltura/client/view/screens/signup_screen.dart';
+import 'package:qltura/client/view/screens/start/start_screen.dart';
 import 'client/service/config/responsiveLayout/mobile_screen_layout.dart';
 import 'client/service/config/responsiveLayout/responsive.dart';
 import 'client/service/config/responsiveLayout/web_screen_layout.dart';
@@ -47,7 +46,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Qltura',
         theme: ThemeData.dark()
-            .copyWith(scaffoldBackgroundColor: mobileBackgroundColor),
+            .copyWith(scaffoldBackgroundColor: appBackgroundColor),
 
         // Checking if the user has logged in or logged out
         home: StreamBuilder(
@@ -75,7 +74,7 @@ class MyApp extends StatelessWidget {
               );
             }
             // If snapshot has no data (User maybe logged out)
-            return const LoginScreen();
+            return const StartScreen();
           },
         ),
       ),
