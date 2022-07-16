@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qltura/client/service/utils/colors.dart';
 
 import '../components/appbar.dart';
 
@@ -20,11 +21,17 @@ class DiscoverScreen extends StatelessWidget {
   List<IconButton> iconButtons() {
     List<IconButton> buttons = <IconButton>[];
     // Add buttons 1
-    buttons.add(IconButton(
-      onPressed: () {},
-      icon: const Icon(Icons.search),
-      tooltip: 'Search Icon',
-    ));
+    buttons.add(
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(
+          Icons.search,
+          color: logoColor,
+          semanticLabel: 'Search',
+          size: 25,
+        ),
+      ),
+    );
     return buttons;
   }
 }

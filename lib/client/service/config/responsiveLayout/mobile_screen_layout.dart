@@ -66,45 +66,50 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
         children: appHomeScreens,
       ),
       bottomNavigationBar: CupertinoTabBar(
-        backgroundColor: mobileBackgroundColor,
-        activeColor: secondaryColor,
-        inactiveColor: secondaryColor,
+        backgroundColor: appBackgroundColor,
+        //border: Border(top: BorderSide(color: appBackgroundColor)),
+        height: 60,
         onTap: navigationTapped,
         items: [
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.home,
-                color: _page == 0 ? brandColor : secondaryColor,
+                color: _page == 0 ? brandColor : logoColor,
+                semanticLabel: 'Home',
+                size: 35,
               ),
-              label: 'Home',
               backgroundColor: primaryColor),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.public,
-                color: _page == 1 ? brandColor : secondaryColor,
+                color: _page == 1 ? brandColor : logoColor,
+                semanticLabel: 'Discover',
+                size: 35,
               ),
-              label: 'Discover',
               backgroundColor: primaryColor),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.person,
-                color: _page == 2 ? brandColor : secondaryColor,
+                color: _page == 2 ? brandColor : logoColor,
+                semanticLabel: 'Profile',
+                size: 35,
               ),
-              label: 'Profile',
               backgroundColor: primaryColor),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.notifications,
-                color: _page == 3 ? brandColor : secondaryColor,
+                color: _page == 3 ? brandColor : logoColor,
+                semanticLabel: 'Notifications',
+                size: 35,
               ),
-              label: 'Notifications',
               backgroundColor: primaryColor),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.menu,
-                color: _page == 4 ? brandColor : secondaryColor,
+                color: _page == 4 ? brandColor : logoColor,
+                semanticLabel: 'Menu',
+                size: 35,
               ),
-              label: 'Menu',
               backgroundColor: primaryColor),
         ],
       ),

@@ -10,22 +10,30 @@ class Appbar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: mobileBackgroundColor,
+      backgroundColor: appBackgroundColor,
+      elevation: 0,
       title: Text(
         title,
-        style: const TextStyle(
-            fontFamily: 'Playfair', fontSize: 26.0, letterSpacing: 2),
+        style: title == 'Qltura'
+            ? const TextStyle(
+                fontFamily: 'Rochester', fontSize: 35.0, color: logoColor)
+            : const TextStyle(
+                fontSize: 25,
+                color: logoColor,
+              ),
       ),
       actions: [
         for (var iconButton in iconButtons)
           Padding(
-            padding: const EdgeInsets.only(left: 10.0),
-            child: CircleAvatar(
-              backgroundColor: secondaryColor,
-              child: iconButton,
-            ),
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Container(
+                width: 40,
+                height: 40,
+                decoration: const BoxDecoration(
+                    shape: BoxShape.circle, color: iconCircleColor),
+                child: Center(child: iconButton)),
           ),
-        const SizedBox(width: 20),
+        const SizedBox(width: 10),
       ],
     );
   }
