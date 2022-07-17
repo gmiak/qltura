@@ -20,3 +20,6 @@ const textFieldTextColor = Color(0xFF919191);
 const textFieldInputTextColor = Color(0xFF1C1C1C);
 const hideLinkTextColor = Color(0xFFA6A6A6);
 const iconCircleColor = Color(0xFFE3E5EA);
+const collectionAvatarBorderColor = Color(0xFFD0D0D0);
+const textColor = Color(0xFF343434);
+const textVersionLightColor = Color(0xFF5B5B5B);
