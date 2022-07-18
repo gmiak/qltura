@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:qltura/client/service/config/provider/user_provider.dart';
 import 'package:qltura/client/service/utils/colors.dart';
@@ -73,42 +74,42 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
         items: [
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.home,
+                FeatherIcons.home,
                 color: _page == 0 ? brandColor : logoColor,
                 semanticLabel: 'Home',
-                size: 35,
+                size: 30,
               ),
               backgroundColor: primaryColor),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.public,
+                FeatherIcons.globe,
                 color: _page == 1 ? brandColor : logoColor,
                 semanticLabel: 'Discover',
-                size: 35,
+                size: 30,
               ),
               backgroundColor: primaryColor),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.person,
+                FeatherIcons.user,
                 color: _page == 2 ? brandColor : logoColor,
                 semanticLabel: 'Profile',
-                size: 35,
+                size: 30,
               ),
               backgroundColor: primaryColor),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.notifications,
+                FeatherIcons.bell,
                 color: _page == 3 ? brandColor : logoColor,
                 semanticLabel: 'Notifications',
-                size: 35,
+                size: 30,
               ),
               backgroundColor: primaryColor),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.menu,
+                FeatherIcons.menu,
                 color: _page == 4 ? brandColor : logoColor,
                 semanticLabel: 'Menu',
-                size: 35,
+                size: 30,
               ),
               backgroundColor: primaryColor),
         ],

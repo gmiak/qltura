@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 import '../../service/utils/colors.dart';
 import '../components/appbar.dart';
@@ -25,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
       IconButton(
         onPressed: () {},
         icon: const Icon(
-          Icons.manage_accounts,
+          FeatherIcons.sliders,
           color: logoColor,
           semanticLabel: 'Manage Accounts',
           size: 25,
@@ -37,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
       IconButton(
         onPressed: () {},
         icon: const Icon(
-          Icons.search,
+          FeatherIcons.search,
           color: logoColor,
           semanticLabel: 'Profile Search',
           size: 25,

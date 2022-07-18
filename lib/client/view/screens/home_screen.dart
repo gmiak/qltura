@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:qltura/client/service/config/responsiveLayout/mobile_screen_layout.dart';
 import 'package:qltura/client/service/utils/colors.dart';
 import 'package:qltura/client/view/components/collection_avatar.dart';
+import 'package:qltura/client/view/components/post.dart';
 import 'package:qltura/client/view/screens/add_post_screen.dart';
 
 import '../components/appbar.dart';
@@ -20,13 +22,13 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             // My collections
-            Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
-              height: 120,
+            SizedBox(
+              height: 100,
               child: Center(
                 child: ListView(
                   scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 15.0, vertical: 8.0),
                   children: [
                     for (Widget widget in tenCollectionsOnTop()) widget,
                     // Button add new collection
@@ -37,7 +39,11 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
+            const Divider(color: collectionAvatarBorderColor),
+            const SizedBox(height: 6.0),
+            // Posts
+            for (PostView post in postList()) post,
           ],
         ),
       ),
@@ -59,7 +65,7 @@ class HomeScreen extends StatelessWidget {
           );
         },
         icon: const Icon(
-          Icons.add_circle_outline,
+          FeatherIcons.plusCircle,
           color: logoColor,
           semanticLabel: 'Add',
           size: 25,
@@ -71,7 +77,7 @@ class HomeScreen extends StatelessWidget {
       IconButton(
         onPressed: () {},
         icon: const Icon(
-          Icons.search,
+          FeatherIcons.search,
           color: logoColor,
           semanticLabel: 'Search',
           size: 25,
@@ -83,7 +89,7 @@ class HomeScreen extends StatelessWidget {
       IconButton(
         onPressed: () {},
         icon: const Icon(
-          Icons.email_outlined,
+          FeatherIcons.mail,
           color: logoColor,
           semanticLabel: 'Message',
           size: 25,
@@ -139,5 +145,31 @@ class HomeScreen extends StatelessWidget {
     ));
     listWidget.add(const SizedBox(width: 20.0));
     return listWidget;
+  }
+
+  // Returns a list of posts
+  List<PostView> postList() {
+    List<PostView> listPost = <PostView>[];
+    // Post 1
+    listPost.add(const PostView(
+        username: "gmiak",
+        userProfilePicLink: "assets/profile.png",
+        imagePostLink: "assets/lambo.png",
+        likes: 50,
+        postTitle: "Lamborghini Huracan",
+        postDescription:
+            "The latest member of the Huracán range provides the purest Lamborghini driving experience combined with the freedom of everyday use!",
+        comments: []));
+
+    // Post 2
+    listPost.add(const PostView(
+        username: "gmiak",
+        userProfilePicLink: "assets/profile.png",
+        imagePostLink: "assets/profile.png",
+        likes: 50,
+        postTitle: "New profile pic",
+        postDescription: "This is so cool!",
+        comments: []));
+    return listPost;
   }
 }

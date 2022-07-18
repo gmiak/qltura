@@ -25,8 +25,8 @@ class _CollectionAvatarState extends State<CollectionAvatar> {
         InkWell(
             onTap: () {},
             child: Container(
-              width: 72,
-              height: 72,
+              width: 62,
+              height: 62,
               padding: const EdgeInsets.all(12.0),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,

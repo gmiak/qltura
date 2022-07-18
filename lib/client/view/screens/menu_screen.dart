@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:qltura/server/controller/user_controller.dart';
 import '../../service/utils/colors.dart';
 import '../components/appbar.dart';
@@ -26,7 +27,7 @@ class MenuScreen extends StatelessWidget {
       IconButton(
         onPressed: () {},
         icon: const Icon(
-          Icons.settings,
+          FeatherIcons.settings,
           color: logoColor,
           semanticLabel: 'Settings',
           size: 25,
@@ -38,7 +39,7 @@ class MenuScreen extends StatelessWidget {
       IconButton(
         onPressed: () {},
         icon: const Icon(
-          Icons.search,
+          FeatherIcons.search,
           color: logoColor,
           semanticLabel: 'Manage Search',
           size: 25,
