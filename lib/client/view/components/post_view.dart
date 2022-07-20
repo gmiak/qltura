@@ -32,7 +32,7 @@ class _PostViewState extends State<PostView> {
       children: [
         // Username and user profile pic
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -76,7 +76,6 @@ class _PostViewState extends State<PostView> {
         // Image that describes the post
         Container(
           width: MediaQuery.of(context).size.width,
-          height: 400,
           decoration: const BoxDecoration(
             color: appBackgroundColor,
             border: Border.symmetric(
@@ -90,7 +89,7 @@ class _PostViewState extends State<PostView> {
         const SizedBox(height: 10.0),
         // Likes, comments, send to someone
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,

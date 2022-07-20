@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:qltura/client/service/config/responsiveLayout/mobile_screen_layout.dart';
 import 'package:qltura/client/service/utils/colors.dart';
+import 'package:qltura/client/service/utils/utils_uno.dart';
 import 'package:qltura/client/view/components/collection_avatar.dart';
-import 'package:qltura/client/view/components/post.dart';
-import 'package:qltura/client/view/screens/add_post_screen.dart';
+import 'package:qltura/client/view/components/post_view.dart';
 
 import '../components/appbar.dart';
 
@@ -54,48 +53,11 @@ class HomeScreen extends StatelessWidget {
   List<IconButton> iconButtons(BuildContext context) {
     List<IconButton> buttons = <IconButton>[];
     // Add buttons 1
-    buttons.add(
-      IconButton(
-        onPressed: () {
-          Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-              builder: (context) => const AddPostScreen(),
-            ),
-            (route) => false,
-          );
-        },
-        icon: const Icon(
-          FeatherIcons.plusCircle,
-          color: logoColor,
-          semanticLabel: 'Add',
-          size: 25,
-        ),
-      ),
-    );
+    buttons.add(getBtnAdd(context));
     // Add buttons 2
-    buttons.add(
-      IconButton(
-        onPressed: () {},
-        icon: const Icon(
-          FeatherIcons.search,
-          color: logoColor,
-          semanticLabel: 'Search',
-          size: 25,
-        ),
-      ),
-    );
+    buttons.add(getBtnSearch(context));
     // Add buttons 3
-    buttons.add(
-      IconButton(
-        onPressed: () {},
-        icon: const Icon(
-          FeatherIcons.mail,
-          color: logoColor,
-          semanticLabel: 'Message',
-          size: 25,
-        ),
-      ),
-    );
+    buttons.add(getBtnMessage(context));
     return buttons;
   }
 
@@ -154,7 +116,7 @@ class HomeScreen extends StatelessWidget {
     listPost.add(const PostView(
         username: "gmiak",
         userProfilePicLink: "assets/profile.png",
-        imagePostLink: "assets/lambo.png",
+        imagePostLink: "assets/car1.png",
         likes: 50,
         postTitle: "Lamborghini Huracan",
         postDescription:

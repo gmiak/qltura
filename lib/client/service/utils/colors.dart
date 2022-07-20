@@ -23,3 +23,6 @@ const iconCircleColor = Color(0xFFE3E5EA);
 const collectionAvatarBorderColor = Color(0xFFD0D0D0);
 const textColor = Color(0xFF343434);
 const textVersionLightColor = Color(0xFF5B5B5B);
+const barSearchFilledColor = Color(0xFFEFEFEF);
+const barSearchTextColor = Color(0xFFA09FA3);
+const barSearchIconColor = Color(0xFF797979);

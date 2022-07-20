@@ -7,11 +7,6 @@ import 'package:provider/provider.dart';
 import 'package:qltura/client/service/config/provider/user_provider.dart';
 import 'package:qltura/client/service/utils/colors.dart';
 import 'package:qltura/client/service/utils/global_variables.dart';
-import 'package:qltura/client/view/screens/discover_screen.dart';
-import 'package:qltura/client/view/screens/home_screen.dart';
-import 'package:qltura/client/view/screens/menu_screen.dart';
-import 'package:qltura/client/view/screens/notifications_screen.dart';
-import 'package:qltura/client/view/screens/profile_screen.dart';
 import 'package:qltura/server/controller/user_controller.dart';
 import 'package:qltura/server/model/user_model.dart';
 

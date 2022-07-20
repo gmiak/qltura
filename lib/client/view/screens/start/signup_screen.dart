@@ -4,7 +4,6 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:qltura/client/service/utils/colors.dart';
-import 'package:qltura/client/view/components/logo_text.dart';
 import 'package:qltura/client/view/components/text_field_input.dart';
 import 'package:qltura/client/view/screens/start/login_screen.dart';
 import 'package:qltura/server/controller/user_controller.dart';

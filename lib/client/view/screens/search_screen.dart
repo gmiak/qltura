@@ -1,24 +1,24 @@
-// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:qltura/client/service/utils/colors.dart';
+import 'package:qltura/client/view/components/search_bar.dart';
 
-class AddPostScreen extends StatefulWidget {
-  const AddPostScreen({Key? key}) : super(key: key);
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({Key? key}) : super(key: key);
 
   @override
-  _AddPostScreenState createState() => _AddPostScreenState();
+  State<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _AddPostScreenState extends State<AddPostScreen> {
+class _SearchScreenState extends State<SearchScreen> {
+  final TextEditingController _searchTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(),
       body: SingleChildScrollView(
         child: Column(
-          children: [
+          children: const [
             // Space
             SizedBox(height: 5),
             // Divider
@@ -26,10 +26,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
               color: collectionAvatarBorderColor,
               height: 0.5,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [],
+            Text(
+              "data",
+              style: TextStyle(color: primaryColor),
             )
           ],
         ),
@@ -52,18 +51,19 @@ class _AddPostScreenState extends State<AddPostScreen> {
           Navigator.of(context).pop();
         },
       ),
-      title: Text("Create post", style: const TextStyle(color: primaryColor)),
+      title: SearchBarComponent(searchTextController: _searchTextController),
       centerTitle: true,
       actions: [
         IconButton(
           icon: const Icon(
-            FeatherIcons.checkCircle,
-            color: blueColor,
+            FeatherIcons.x,
+            color: logoColor,
           ),
           iconSize: 30,
-          onPressed: () {},
+          onPressed: () {
+            _searchTextController.clear();
+          },
         ),
-        SizedBox(width: 10),
       ],
     );
   }
