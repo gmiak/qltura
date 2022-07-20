@@ -17,6 +17,31 @@ extension StringValidationService on String {
     return passwordRegExp.hasMatch(this);
   }
 
+  bool get isContaindigit {
+    final passwordRegExp = RegExp(r"^(?=.*[0-9])");
+    return passwordRegExp.hasMatch(this);
+  }
+
+  bool get isContainLowercase {
+    final passwordRegExp = RegExp(r"^(?=.*[a-z])");
+    return passwordRegExp.hasMatch(this);
+  }
+
+  bool get isContainUppercase {
+    final passwordRegExp = RegExp(r"^(?=.*[A-Z])");
+    return passwordRegExp.hasMatch(this);
+  }
+
+  bool get isContainSpecialCharacter {
+    final passwordRegExp = RegExp(r"^(?=.*?[#?!@$%^&*-])");
+    return passwordRegExp.hasMatch(this);
+  }
+
+  bool get isLeastEightCharacter {
+    final passwordRegExp = RegExp(r"^(?=.*[A-Z])");
+    return passwordRegExp.hasMatch(this);
+  }
+
   bool get isNotNull {
     // ignore: unnecessary_null_comparison
     return this != null;
