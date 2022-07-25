@@ -3,6 +3,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:qltura/client/view/components/grid_view.dart';
 import 'package:qltura/client/view/components/search_bar.dart';
 import '../../service/utils/colors.dart';
+import '../../service/utils/global_variables.dart';
 import '../components/grid_view.dart';
 
 class DiscoverScreen extends StatefulWidget {
@@ -27,18 +28,6 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
         ],
       )),
     );
-  }
-
-  // Returns search-list
-  List<String> searchList() {
-    List<String> searchItems = <String>[];
-    searchItems.add("assets/music1.png");
-    searchItems.add("assets/music2.png");
-    searchItems.add("assets/music3.png");
-    searchItems.add("assets/car2.png");
-    searchItems.add("assets/car3.png");
-    searchItems.add("assets/car4.png");
-    return searchItems;
   }
 
   // Page Appbar

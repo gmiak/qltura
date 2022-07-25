@@ -4,7 +4,7 @@ import 'package:qltura/client/service/utils/colors.dart';
 import 'package:qltura/client/service/utils/utils_uno.dart';
 import 'package:qltura/client/view/components/collection_avatar.dart';
 import 'package:qltura/client/view/components/post_view.dart';
-
+import '../../service/utils/global_variables.dart';
 import '../components/appbar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -59,54 +59,6 @@ class HomeScreen extends StatelessWidget {
     // Add buttons 3
     buttons.add(getBtnMessage(context));
     return buttons;
-  }
-
-  // Returns collection avatar
-  List<Widget> tenCollectionsOnTop() {
-    List<Widget> listWidget = <Widget>[];
-    // Collection 1
-    listWidget.add(const CollectionAvatar(
-      title: "Musics",
-      imageLink: "assets/music.png",
-      pageLink: MobileScreenLayout(),
-    ));
-    listWidget.add(const SizedBox(width: 20.0));
-    // Collection 2
-    listWidget.add(const CollectionAvatar(
-      title: "Movies",
-      imageLink: "assets/movie.png",
-      pageLink: MobileScreenLayout(),
-    ));
-    listWidget.add(const SizedBox(width: 20.0));
-    // Collection 3
-    listWidget.add(const CollectionAvatar(
-      title: "Books",
-      imageLink: "assets/book.png",
-      pageLink: MobileScreenLayout(),
-    ));
-    listWidget.add(const SizedBox(width: 20.0));
-    // Collection 4
-    listWidget.add(const CollectionAvatar(
-      title: "Watches",
-      imageLink: "assets/watch.png",
-      pageLink: MobileScreenLayout(),
-    ));
-    listWidget.add(const SizedBox(width: 20.0));
-    // Collection 5
-    listWidget.add(const CollectionAvatar(
-      title: "Cars",
-      imageLink: "assets/car.png",
-      pageLink: MobileScreenLayout(),
-    ));
-    listWidget.add(const SizedBox(width: 20.0));
-    // Collection 6
-    listWidget.add(const CollectionAvatar(
-      title: "Shoes",
-      imageLink: "assets/shoes.png",
-      pageLink: MobileScreenLayout(),
-    ));
-    listWidget.add(const SizedBox(width: 20.0));
-    return listWidget;
   }
 
   // Returns a list of posts
