@@ -27,11 +27,12 @@ class Appbar extends StatelessWidget with PreferredSizeWidget {
           Padding(
             padding: const EdgeInsets.only(left: 8.0),
             child: Container(
-                width: 40,
-                height: 40,
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle, color: iconCircleColor),
-                child: Center(child: iconButton)),
+              width: 40,
+              height: 40,
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle, color: iconCircleColor),
+              child: Center(child: iconButton),
+            ),
           ),
         const SizedBox(width: 10),
       ],
